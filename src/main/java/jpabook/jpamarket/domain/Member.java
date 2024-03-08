@@ -2,6 +2,9 @@ package jpabook.jpamarket.domain;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Member {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,6 +14,10 @@ public class Member {
     private String city;
     private String street;
     private String zipcode;
+
+    // Member에서 굳이 orders를 가지고 있을 필요가 없지만, 예시이므로 추가
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 
     public Long getId() {
         return id;

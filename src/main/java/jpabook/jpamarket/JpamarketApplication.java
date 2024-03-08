@@ -4,6 +4,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import jpabook.jpamarket.domain.Order;
+import jpabook.jpamarket.domain.OrderItem;
 
 public class JpamarketApplication {
 
@@ -15,6 +17,18 @@ public class JpamarketApplication {
         tx.begin();
 
         try {
+            // 양방향
+//            Order order = new Order();
+//            order.addOderItem(new OrderItem());
+
+            // 단방향
+            Order order = new Order();
+            em.persist(order);
+
+            OrderItem orderItem = new OrderItem();
+            orderItem.setOrder(order);
+            em.persist(orderItem);
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
