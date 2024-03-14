@@ -16,6 +16,10 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
+
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;
     
     // Order 입장에서는 OrderItem이 중요할 수 있으므로 양방향 매핑 추가, 그러나 없어도 됨
     @OneToMany(mappedBy = "order")
