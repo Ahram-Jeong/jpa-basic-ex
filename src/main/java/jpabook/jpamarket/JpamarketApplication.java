@@ -4,8 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import jpabook.jpamarket.domain.Order;
-import jpabook.jpamarket.domain.OrderItem;
+import jpabook.jpamarket.domain.Album;
 
 public class JpamarketApplication {
 
@@ -17,9 +16,10 @@ public class JpamarketApplication {
         tx.begin();
 
         try {
+            /*
             // 양방향
-//            Order order = new Order();
-//            order.addOderItem(new OrderItem());
+            Order order = new Order();
+            order.addOderItem(new OrderItem());
 
             // 단방향
             Order order = new Order();
@@ -28,6 +28,13 @@ public class JpamarketApplication {
             OrderItem orderItem = new OrderItem();
             orderItem.setOrder(order);
             em.persist(orderItem);
+            */
+
+            Album album = new Album();
+            album.setArtist("WOODZ");
+            album.setEtc("OO-LI");
+
+            em.persist(album);
 
             tx.commit();
         } catch (Exception e) {
